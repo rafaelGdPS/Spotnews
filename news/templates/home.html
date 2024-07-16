@@ -4,13 +4,14 @@
 {% block title %} Página Inicial {% endblock %}
 
 {% block content %}
-<h1>Test</h1>
   {% for new in news %}
-    <div>
-      <h2 class="news-title">{{new.title}}</h2>
-      <span class="news-date">{{new.created_at|date:"d/m/Y"}}</span>
-      <img src="{% static new.image.url %}" alt="Imagem da noticia">
-    </div>
+    <a href="{% url 'news-details-page' new.id %}">
+      <div>
+        <h2 class="news-title">{{new.title}}</h2>
+        <span class="news-date">{{new.created_at|date:"d/m/Y"}}</span>
+        <img src="{% static new.image.url %}" alt="Imagem da noticia">
+      </div>
+    </a>
   {% empty %}
   <h2>Sem noticias no momento!</h2>
   {% endfor %}

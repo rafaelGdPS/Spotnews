@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Página de Detalhes da Notícia {% endblock %}
+
+{% block content %}
+  <h1 class="news-title">{{details.title}}</h1>
+  <p class="news-content">{{details.content}}</p>
+  {% for category in details.categories.all %}
+  <span class="news-categories">{{category.name}}</span>
+    {% endfor %}
+  <span class="news-author">{{details.author}}</span>
+  <img src="{% static details.image.url %}" alt="Imagem da noticia">
+  <span>{{details.created_at|date:"d/m/Y"}}</span>
+
+{% endblock %}
