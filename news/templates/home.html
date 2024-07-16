@@ -6,7 +6,7 @@
 {% block content %}
   {% for new in news %}
     <a href="{% url 'news-details-page' new.id %}">
-      <div>
+      <div class="news-container">
         <h2 class="news-title">{{new.title}}</h2>
         <span class="news-date">{{new.created_at|date:"d/m/Y"}}</span>
         <img src="{% static new.image.url %}" alt="Imagem da noticia">
