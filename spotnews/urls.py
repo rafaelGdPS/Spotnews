@@ -18,10 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from news.views import CategoryViewSet, NewsViewSet, UserViewSet
+
+router = routers.DefaultRouter()
+
+router.register(r'categories', CategoryViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'news', NewsViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("news.urls")),
+    path("api/", include(router.urls))
 ]
 
 if settings.DEBUG:
