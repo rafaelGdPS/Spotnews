@@ -38,8 +38,10 @@ def create_new_news(request):
         if form.is_valid():
             data = form.cleaned_data.pop("categories")
             news = News.objects.create(**form.cleaned_data)
+            print(data)
             news.categories.set(data)
             return redirect("home-page")
+    print(form)
     context = {"form": form}
     return render(request, "news_form.html", context)
 
